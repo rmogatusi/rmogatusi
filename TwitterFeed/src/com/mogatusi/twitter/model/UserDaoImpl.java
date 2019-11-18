@@ -41,7 +41,7 @@ public class UserDaoImpl {
 
         List<String> followingArray = new ArrayList<>();
         //finding the person the user follows people
-        String following = sourceLine.substring(sourceLine.lastIndexOf(" "), sourceLine.length()) ;
+        String following = sourceLine.substring(sourceLine.lastIndexOf(" ") + 1, sourceLine.length()) ;
         String alsoFollowing = null;
 
         followingArray.add(following);

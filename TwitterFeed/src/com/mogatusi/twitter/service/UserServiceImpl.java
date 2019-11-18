@@ -34,4 +34,20 @@ public class UserServiceImpl implements UserService {
         List<TweetDao> tweetDao = tweetDaoImpl.fromFile(userDao);
         return tweetDao;
     }
+
+    @Override
+    public boolean isUserFollowingTweeter(String user, TweetDao tweet, List<UserDao> returnedUsers) {
+
+        for (UserDao returnedUser: returnedUsers){
+            if (user.equals(returnedUser.getName())){
+                for (String following: returnedUser.getFollowing()){
+                    if (following.equals(tweet.getTweeter())){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
 }

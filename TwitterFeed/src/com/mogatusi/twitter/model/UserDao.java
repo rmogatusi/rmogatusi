@@ -20,7 +20,7 @@ public class UserDao {
         this.name = name;
     }
 
-    public List<String> getFollowers() {
+    public List<String> getFollowing() {
         return following;
     }
 

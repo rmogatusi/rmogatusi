@@ -21,25 +21,26 @@ public class TweetDaoImpl {
         tweetsFile = new File("tweet.txt");
 
         Scanner fileReader = new Scanner(tweetsFile);
-        for (UserDao user: userDao){
-            while (fileReader.hasNextLine()) {
-                tweetLine = fileReader.nextLine();
-                tweetsList.add(lineReader(user.getName(), tweetLine));
-            }
+        int userIndex=0;
+        while (fileReader.hasNextLine()) {
+            tweetLine = fileReader.nextLine();
+            tweetsList.add(lineReader(/*userDao.get(0).getName(),*/ tweetLine));
+            userIndex++;
         }
+
         return tweetsList;
     }
 
-    private TweetDao lineReader(String user, String sourceLine) {
+    private TweetDao lineReader(/*String user,*/ String sourceLine) {
         String presentationTweet = null;
 
         String tweetUser = sourceLine.substring(0, sourceLine.indexOf(">"));
         String tweet = sourceLine.substring(sourceLine.lastIndexOf(">")+2, sourceLine.length()) ;
 
-        if(tweetUser.equals(user)){
+        //if(tweetUser.equals(user)){
             presentationTweet = "@" + tweetUser + ": " + tweet;
             return new TweetDao(tweetUser, presentationTweet);
-        }
-        return new TweetDao(tweetUser, tweet);
+        //}
+        //return new TweetDao(tweetUser, tweet);
     }
 }

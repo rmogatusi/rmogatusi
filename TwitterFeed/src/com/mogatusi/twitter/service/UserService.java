@@ -12,4 +12,6 @@ public interface UserService {
     List<UserDao> getUserDaos() throws FileNotFoundException, IOException, Exception;
 
     List<TweetDao> getTweets(List<UserDao> userDao) throws IOException;
+
+    boolean isUserFollowingTweeter(String user, TweetDao tweet, List<UserDao> returnedUsers);
 }
